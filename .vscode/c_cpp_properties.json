@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/Users/clementbiteau/Documents/42_school/42_cursus/cub3d/includes",
+                "/Users/clementbiteau/Documents/42_school/42_cursus/cub3d/minilibx-linux",
+                "/Users/clementbiteau/Documents/42_school/42_cursus/cub3d/libft"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++98",
+            "intelliSenseMode": "macos-gcc-x64"
+        }
+    ],
+    "version": 4
+}
