@@ -45,5 +45,11 @@ static void free_map(t_data *data)
 
 int    free_data(t_data *data)
 {
-
+    if (data->textures)
+        free_table((void **)data->textures);
+    if (data->texture_pixels)
+        free_table((void **)data->texture_pixels);
+    free_textures(&data->texture_info);
+    free_map(data);
+    return (FAILURE);
 }

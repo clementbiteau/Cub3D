@@ -23,6 +23,8 @@
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
 
+# define MOUSE_MOVE 20
+
 # define MMAP_PIXEL_SIZE 128
 # define MMAP_VIEW_DIST 4
 # define MMAP_COLOR_PLAYER 0x00FF00
@@ -96,17 +98,6 @@ typedef struct s_mapinfo
 	int			index_end_of_map;
 }	t_mapinfo;
 
-typedef struct s_mapinfo
-{
-	int			fd;
-	int			line_count;
-	char		*path;
-	char		**file;
-	int			height;
-	int			width;
-	int			index_end_of_map;
-}	t_mapinfo;
-
 typedef struct s_player
 {
 	char	dir;
@@ -155,7 +146,7 @@ typedef struct s_data
 	t_ray		ray;
 	int			**texture_pixels;
 	int			**textures;
-	t_texture_info	texinfo;
+	t_texture_info	texture_info;
 	t_img		minimap;
 }	t_data;
 

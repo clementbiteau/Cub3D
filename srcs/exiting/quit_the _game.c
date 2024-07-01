@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int clean_exit(t_data *data, int exit_code)
+int quit(t_data *data, int exit_code)
 {
     if (!data)
         exit(exit_code);
