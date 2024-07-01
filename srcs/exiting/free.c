@@ -35,10 +35,15 @@ static void free_textures(t_texture_info *textures)
 
 static void free_map(t_data *data)
 {
-    
+    if (data->mapinfo.fd > 0)
+        close(data->mapinfo.fd);
+    if (data->mapinfo.file)
+        free_table((void **)data->mapinfo.file);
+    if (data->map)
+        free_table((void **)data->map);
 }
 
-void    free_data(t_data *data)
+int    free_data(t_data *data)
 {
 
 }

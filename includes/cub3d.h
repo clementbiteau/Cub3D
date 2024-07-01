@@ -67,7 +67,7 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
-typedef struct s_texinfo
+typedef struct s_texture_info
 {
 	char			*north;
 	char			*south;
@@ -83,7 +83,7 @@ typedef struct s_texinfo
 	double			pos;
 	int				x;
 	int				y;
-}	t_texinfo;
+}	t_texture_info;
 
 typedef struct s_mapinfo
 {
@@ -146,7 +146,7 @@ typedef struct s_ray
 typedef struct s_data
 {
 	void		*mlx;
-	void		*win;
+	void		*window;
 	int			win_height;
 	int			win_width;
 	t_mapinfo	mapinfo;
@@ -155,7 +155,7 @@ typedef struct s_data
 	t_ray		ray;
 	int			**texture_pixels;
 	int			**textures;
-	t_texinfo	texinfo;
+	t_texture_info	texinfo;
 	t_img		minimap;
 }	t_data;
 
