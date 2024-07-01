@@ -16,7 +16,7 @@ static int  input_handler(int pressed, t_data *data)
         data->player.move_x += 1;
     if (pressed == XK_Escape)
         exit_game(data);
-    return (0);
+    return (SUCCESS);
 }
 
 static int	ft_pressed(int pressed, t_data *data)
@@ -35,7 +35,7 @@ static int	ft_pressed(int pressed, t_data *data)
 		data->player.rotate = 0;
 	if (pressed == XK_Right && data->player.rotate >= -1)
 		data->player.rotate = 0;
-	return (0);
+	return (SUCCESS);
 }
 
 static int	ft_released(int pressed, t_data *data)
@@ -54,7 +54,7 @@ static int	ft_released(int pressed, t_data *data)
 		data->player.rotate = 0;
 	if (pressed == XK_Right && data->player.rotate >= -1)
 		data->player.rotate = 0;
-	return (0);
+	return (SUCCESS);
 }
 
 static void wrap_mouse_position(t_data *data, int x, int y)
@@ -83,7 +83,7 @@ static int	mouse_motion_handler(int x, int y, t_data *data)
 	else if (x > old_x)
 		data->player.has_moved += rotate_player(data, 1);
 	old_x = x;
-	return (0);
+	return (SUCCESS);
 }
 
 void	listen_for_input(t_data *data)
