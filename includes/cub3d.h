@@ -115,11 +115,11 @@ typedef struct s_data
 	void		*window;
 	int			win_height;
 	int			win_width;
-	t_mapper	mapper;
-	char		**map;
-	t_player	player;
 	int			**texture_pixels;
 	int			**textures;
+	char		**map;
+	t_player	player;
+	t_mapper	mapper;
 	t_coloring	coloring;
 	t_img		minimap;
 }	t_data;
