@@ -165,7 +165,7 @@ int    check_move(t_data *data, double next_x, double next_y);
 int	moving(t_data *data);
 void	listen_for_input(t_data *data);
 
-// utils
+// UTILS
 bool    is_spaces(char c);
 bool    only_digit(char *str);
 

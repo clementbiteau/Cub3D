@@ -8,7 +8,6 @@
                 "${workspaceFolder}/minilibx-linux",
                 "${workspaceFolder}/libft",
                 "/opt/X11/include",  // X11 includes
-                "/usr/local/include", // Additional include path for Homebrew packages
                 "/Users/clementbiteau/Documents/42_school/42_cursus/cub3d/includes",
                 "/Users/clementbiteau/Documents/42_school/42_cursus/cub3d/minilibx-linux",
                 "/Users/clementbiteau/Documents/42_school/42_cursus/cub3d/libft"
