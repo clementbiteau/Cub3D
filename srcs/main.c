@@ -6,8 +6,9 @@ static void print_window_of_controls(void)
 	printf(RED "\tS" RESET ": step backward\n");
 	printf(CYAN "\tA" RESET ": step to the left\t");
 	printf(YELLOW "\tD" RESET ": step to the right\n");
-	printf(BLUE "\t<" RESET ": rotate view to left\t");
-	printf(PURPLE "\t>" RESET ": rotate view to right\n");
+	printf(BLUE "\t<" RESET ": rotate to left\t");
+	printf(PURPLE "\t>" RESET ": rotate to right\n");
+    printf(WHITE "\tMouse" RESET ": rotate view\n");
     printf("\n");
 }
 
