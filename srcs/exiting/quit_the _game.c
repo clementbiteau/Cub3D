@@ -18,7 +18,7 @@ int quit(t_data *data, int exit_code)
 
 int exit_game(t_data *data)
 {
-    clean_exit(data, 0);
+    quit(data, 0);
     return (0);
 }
 

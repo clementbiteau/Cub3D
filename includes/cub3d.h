@@ -4,6 +4,11 @@
 # include "colors.h"
 # include "../libft/includes/libft.h"
 # include "mlx.h"
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <unistd.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
@@ -11,11 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <unistd.h>
-# include <X11/keysym.h>
-# include <X11/X.h>
+
 
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
@@ -39,7 +40,10 @@
 # define ERROR_MAP_GARNISH "Wrong Map Elements -> map defined by: 10NSEW"
 # define ERROR_MAP_PLAYER "Wrong Number of Players -> only 1 is allowed"
 
+# define ERROR_NO_MLX "MinilibX was unable to open a window."
+# define ERROR_MLX_AFF "MinilibX was unable to give a printout."
 
+typedef unsigned long	t_ulong;
 
 enum    e_output
 {
@@ -58,8 +62,6 @@ enum e_texture_index
 	WEST = 3
 };
 
-typedef unsigned long	t_ulong;
-
 typedef struct s_img
 {
 	void	*img;
@@ -69,7 +71,7 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
-typedef struct s_texture_info
+typedef struct s_coloring
 {
 	char			*north;
 	char			*south;
@@ -77,26 +79,27 @@ typedef struct s_texture_info
 	char			*east;
 	int				*floor;
 	int				*ceiling;
-	unsigned long	hex_floor;
-	unsigned long	hex_ceiling;
+	unsigned long	floor_in_hexa;
+	unsigned long	ceiling_in_hexa;
 	int				size;
 	int				index;
 	double			step;
 	double			pos;
 	int				x;
 	int				y;
-}	t_texture_info;
+}	t_coloring;
 
-typedef struct s_mapinfo
+typedef struct s_mapper
 {
 	int			fd;
+	int			height;
+	int			width;
 	int			line_count;
 	char		*path;
 	char		**file;
-	int			height;
-	int			width;
+
 	int			index_end_of_map;
-}	t_mapinfo;
+}	t_mapper;
 
 typedef struct s_player
 {
@@ -140,13 +143,13 @@ typedef struct s_data
 	void		*window;
 	int			win_height;
 	int			win_width;
-	t_mapinfo	mapinfo;
+	t_mapper	mapper;
 	char		**map;
 	t_player	player;
 	t_ray		ray;
 	int			**texture_pixels;
 	int			**textures;
-	t_texture_info	texture_info;
+	t_coloring	coloring;
 	t_img		minimap;
 }	t_data;
 

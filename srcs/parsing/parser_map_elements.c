@@ -15,9 +15,9 @@ static int check_map_garnish(t_data *data, char **map)
             while (is_spaces(map[i][j]) == true)
                 j++;
             if (!ft_strchr("10NSEW", map[i][j]))
-                return (ft_error(data->mapinfo.path, ERROR_MAP_GARNISH, FAILURE));
+                return (ft_error(data->mapper.path, ERROR_MAP_GARNISH, FAILURE));
             if (ft_strchr("NSEW", map[i][j]) && data->player.dir != '0')
-                return (ft_error(data->mapinfo.path, ERROR_MAP_PLAYER, FAILURE));
+                return (ft_error(data->mapper.path, ERROR_MAP_PLAYER, FAILURE));
             if (ft_strchr("NSEW", map[i][j]) && data->player.dir == '0')
                 data->player.dir = '0';
             j++;

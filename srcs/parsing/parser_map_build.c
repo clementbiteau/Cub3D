@@ -18,7 +18,7 @@ static bool check_walls(char **map, int row)
     return (true);
 }
 
-bool    check_map_build(t_mapinfo *map_info, char **map)
+bool    check_map_build(t_mapper *map_info, char **map)
 {
     int i;
     int j;

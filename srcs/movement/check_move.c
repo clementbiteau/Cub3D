@@ -7,8 +7,8 @@ static bool is_not_wall(t_data *data, double x, double y)
 
 static bool is_within_bounds(t_data *data, double x, double y)
 {
-    return (x >= 0.25 && x < data->mapinfo.width - 0.25 &&
-            y >= 0.25 && y < data->mapinfo.height - 0.25);
+    return (x >= 0.25 && x < data->mapper.width - 0.25 &&
+            y >= 0.25 && y < data->mapper.height - 0.25);
 }
 
 static bool is_ok_to_move(t_data *data, double x, double y)

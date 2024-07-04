@@ -17,7 +17,7 @@ void    free_table(void **tab)
     }
 }
 
-static void free_textures(t_texture_info *textures)
+static void free_textures(t_coloring *textures)
 {
     if (textures->north)
         free(textures->north);
@@ -35,10 +35,10 @@ static void free_textures(t_texture_info *textures)
 
 static void free_map(t_data *data)
 {
-    if (data->mapinfo.fd > 0)
-        close(data->mapinfo.fd);
-    if (data->mapinfo.file)
-        free_table((void **)data->mapinfo.file);
+    if (data->mapper.fd > 0)
+        close(data->mapper.fd);
+    if (data->mapper.file)
+        free_table((void **)data->mapper.file);
     if (data->map)
         free_table((void **)data->map);
 }
@@ -49,7 +49,7 @@ int    free_data(t_data *data)
         free_table((void **)data->textures);
     if (data->texture_pixels)
         free_table((void **)data->texture_pixels);
-    free_textures(&data->texture_info);
+    free_textures(&data->coloring);
     free_map(data);
     return (FAILURE);
 }
