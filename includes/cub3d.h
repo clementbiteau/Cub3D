@@ -109,27 +109,6 @@ typedef struct s_player
 	int		rotate;
 }	t_player;
 
-typedef struct s_ray
-{
-	double	camera_x;
-	double	dir_x;
-	double	dir_y;
-	int		map_x;
-	int		map_y;
-	int		step_x;
-	int		step_y;
-	double	sidedist_x;
-	double	sidedist_y;
-	double	deltadist_x;
-	double	deltadist_y;
-	double	wall_dist;
-	double	wall_x;
-	int		side;
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
-}	t_ray;
-
 typedef struct s_data
 {
 	void		*mlx;
@@ -139,7 +118,6 @@ typedef struct s_data
 	t_mapper	mapper;
 	char		**map;
 	t_player	player;
-	t_ray		ray;
 	int			**texture_pixels;
 	int			**textures;
 	t_coloring	coloring;
@@ -156,7 +134,6 @@ void    re_init_image(t_img *image);
 void	init_mapper(t_mapper *mapper);
 void init_player_in_field(t_data *data);
 void	init_player(t_player *player);
-void	init_ray(t_ray *ray);
 void	init_data(t_data *data);
 void	init_mlx(t_data *data);
 
