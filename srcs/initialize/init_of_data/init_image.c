@@ -6,5 +6,4 @@ void    re_init_image(t_img *image)
 	image->addr = NULL;
 	image->pixel_bits = 0;
 	image->size_line = 0;
-	image->endian = 0;
 }

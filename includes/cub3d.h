@@ -62,7 +62,6 @@ typedef struct s_img
 	int		*addr;
 	int		pixel_bits;
 	int		size_line;
-	int		endian;
 }	t_img;
 
 typedef struct s_coloring
