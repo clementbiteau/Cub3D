@@ -26,6 +26,7 @@
 
 # define MOUSE_MOVEMENT 10
 
+# define ERROR_START "./cub3d -> <map> (map file must be .cub)"
 # define ERROR_INPUT_ARGS "Wrong Arguments Input"
 # define ERROR_INPUT_CUB "Must provide a valid .cub file"
 # define ERROR_INPUT_XPM "Must provide a valid .xpm file"
@@ -90,8 +91,7 @@ typedef struct s_mapper
 	int			line_count;
 	char		*path;
 	char		**file;
-
-	int			index_end_of_map;
+	int			last_index;
 }	t_mapper;
 
 typedef struct s_player
@@ -152,7 +152,7 @@ int check_input(char *input);
 bool    check_map_build(t_mapper *map_info, char **map);
 
 // INIT
-void    init_image(t_img *image);
+void    re_init_image(t_img *image);
 void	init_mapper(t_mapper *mapper);
 void init_player_in_field(t_data *data);
 void	init_player(t_player *player);

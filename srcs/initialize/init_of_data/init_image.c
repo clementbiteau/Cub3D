@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void    init_image(t_img *image)
+void    re_init_image(t_img *image)
 {
     image->img = NULL;
 	image->addr = NULL;
