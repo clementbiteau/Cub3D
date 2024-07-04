@@ -5,8 +5,8 @@ static int	forward(t_data *data)
 	double	new_x;
 	double	new_y;
 
-	new_x = data->player.pos_x + data->player.dir_x * MOVESPEED;
-	new_y = data->player.pos_y + data->player.dir_y * MOVESPEED;
+	new_x = data->player.pos_x + data->player.dir_x * MOVEMENT_SPEED;
+	new_y = data->player.pos_y + data->player.dir_y * MOVEMENT_SPEED;
 	return (check_move(data, new_x, new_y));
 }
 
@@ -15,8 +15,8 @@ static int	backward(t_data *data)
 	double	new_x;
 	double	new_y;
 
-	new_x = data->player.pos_x - data->player.dir_x * MOVESPEED;
-	new_y = data->player.pos_y - data->player.dir_y * MOVESPEED;
+	new_x = data->player.pos_x - data->player.dir_x * MOVEMENT_SPEED;
+	new_y = data->player.pos_y - data->player.dir_y * MOVEMENT_SPEED;
 	return (check_move(data, new_x, new_y));
 }
 
@@ -25,8 +25,8 @@ static int	left(t_data *data)
 	double	new_x;
 	double	new_y;
 
-	new_x = data->player.pos_x + data->player.dir_y * MOVESPEED;
-	new_y = data->player.pos_y - data->player.dir_x * MOVESPEED;
+	new_x = data->player.pos_x + data->player.dir_y * MOVEMENT_SPEED;
+	new_y = data->player.pos_y - data->player.dir_x * MOVEMENT_SPEED;
 	return (check_move(data, new_x, new_y));
 }
 
@@ -35,8 +35,8 @@ static int	right(t_data *data)
 	double	new_x;
 	double	new_y;
 
-	new_x = data->player.pos_x - data->player.dir_y * MOVESPEED;
-	new_y = data->player.pos_y + data->player.dir_x * MOVESPEED;
+	new_x = data->player.pos_x - data->player.dir_y * MOVEMENT_SPEED;
+	new_y = data->player.pos_y + data->player.dir_x * MOVEMENT_SPEED;
 	return (check_move(data, new_x, new_y));
 }
 

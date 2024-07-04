@@ -18,20 +18,13 @@
 # include <string.h>
 
 
-# define WIN_WIDTH 640
-# define WIN_HEIGHT 480
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 
-# define MOVESPEED 0.0125
-# define ROTSPEED 0.015
+# define MOVEMENT_SPEED 0.1
+# define ROTATION_SPEED 0.05
 
-# define MOUSE_MOVE 20
-
-# define MMAP_PIXEL_SIZE 128
-# define MMAP_VIEW_DIST 4
-# define MMAP_COLOR_PLAYER 0x00FF00
-# define MMAP_COLOR_WALL 0x808080
-# define MMAP_COLOR_FLOOR 0xE6E6E6
-# define MMAP_COLOR_SPACE 0x404040
+# define MOUSE_MOVEMENT 10
 
 # define ERROR_INPUT_ARGS "Wrong Arguments Input"
 # define ERROR_INPUT_CUB "Must provide a valid .cub file"
@@ -154,17 +147,35 @@ typedef struct s_data
 }	t_data;
 
 // parsing args
-// parsing map
+int check_input(char *input);
+int check_input(char *input);
+bool    check_map_build(t_mapper *map_info, char **map);
 
-
-// init structs
-// mlx init
+// INIT
+void    init_image(t_img *image);
+void	init_mapper(t_mapper *mapper);
+void init_player_in_field(t_data *data);
+void	init_player(t_player *player);
+void	init_ray(t_ray *ray);
+void	init_data(t_data *data);
+void	init_mlx(t_data *data);
 
 // movement manager
+int    check_move(t_data *data, double next_x, double next_y);
+int	moving(t_data *data);
+void	listen_for_input(t_data *data);
 
 // utils
+bool    is_spaces(char c);
+bool    only_digit(char *str);
 
-// free fts
+// EXIT
+void    free_table(void **tab);
+int    free_data(t_data *data);
+int    ft_error(char *why, char *str, int exit_code);
+int exit_game(t_data *data);
+int quit(t_data *data, int exit_code);
+
 // raycasting
 // rendering
 

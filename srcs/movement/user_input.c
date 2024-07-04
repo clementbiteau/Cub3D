@@ -59,15 +59,15 @@ static int	ft_released(int pressed, t_data *data)
 
 static void wrap_mouse_position(t_data *data, int x, int y)
 {
-    if (x >= data->win_width - MOUSE_MOVE)
+    if (x >= data->win_width - MOUSE_MOVEMENT)
     {
-        x = MOUSE_MOVE;
-        mlx_mouse_move(data->mlx, data->window, x, y);
+        x = MOUSE_MOVEMENT;
+        mlx_MOUSE_MOVEMENT(data->mlx, data->window, x, y);
     }
-    else if (x <= MOUSE_MOVE)
+    else if (x <= MOUSE_MOVEMENT)
     {
-        x = data->win_width - MOUSE_MOVE;
-        mlx_mouse_move(data->mlx, data->window, x, y);
+        x = data->win_width - MOUSE_MOVEMENT;
+        mlx_MOUSE_MOVEMENT(data->mlx, data->window, x, y);
     }
 }
 
@@ -88,7 +88,7 @@ static int	mouse_motion_handler(int x, int y, t_data *data)
 
 void	listen_for_input(t_data *data)
 {
-	mlx_hook(data->window, ClientMessage, NoEventMask, exit_game(), data);
+	mlx_hook(data->window, ClientMessage, NoEventMask, exit_game, data);
 	mlx_hook(data->window, KeyPress, KeyPressMask, ft_pressed, data);
 	mlx_hook(data->window, KeyRelease, KeyReleaseMask, ft_released, data);
 }
