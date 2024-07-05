@@ -17,13 +17,13 @@ LIBFT   = libft/libft.a
 AUTHOR  = Céline & Clément - The FPS Masters
 DATE    = 04/07/2024
 
-SRCS        =                 initialize/init_of_data/init_image.c \
-                        initialize/init_of_data/init_map_info.c \
-                        initialize/init_of_data/init_player_in_field.c \
-                        initialize/init_of_data/init_player.c \
-                        initialize/init_of_data/init_raycast.c \
-                        initialize/init_of_data/init.c \
-                        initialize/init_of_mlx/init_mlx.c \
+SRCS        =                 initialize/init_image.c \
+                        initialize/init_map_info.c \
+                        initialize/init_player_in_field.c \
+                        initialize/init_player.c \
+                        initialize/init_raycast.c \
+                        initialize/init.c \
+                        initialize/init_mlx.c \
                         parsing/parser_input.c \
                         parsing/parser_map_build.c \
                         parsing/parser_map_elements.c \
