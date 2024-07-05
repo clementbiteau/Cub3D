@@ -26,6 +26,13 @@
 
 # define MOUSE_MOVEMENT 10
 
+#define MINI_MAP_PLAYER 0xFF0000
+#define MINI_MAP_WALL 0x00FF00
+#define MINI_MAP_FLOOR 0x0000FF
+#define MINI_MAP_SPACE 0xFFFFFF
+#define MINI_MAP_PIXEL_SIZE 100
+#define MINI_MAP_BORDERS 0x000000
+
 # define ERROR_START "./cub3d -> <map> (map file must be .cub)"
 # define ERROR_INPUT_ARGS "Wrong Arguments Input"
 # define ERROR_INPUT_CUB "Must provide a valid .cub file"
@@ -60,8 +67,11 @@ typedef struct s_img
 {
 	void	*img;
 	int		*addr;
-	int		pixel_bits;
-	int		size_line;
+	int		width;
+	int		height;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }	t_img;
 
 typedef struct s_coloring
@@ -108,6 +118,15 @@ typedef struct s_player
 	int		rotate;
 }	t_player;
 
+typedef struct	s_minimap
+{
+	t_img		*img;
+	char		**map;
+	int			tile_size;
+	int			size;
+}				t_minimap;
+
+
 typedef struct s_data
 {
 	void		*mlx;
@@ -139,11 +158,12 @@ void	init_mlx(t_data *data);
 // movement manager
 int    check_move(t_data *data, double next_x, double next_y);
 int	moving(t_data *data);
-void	listen_for_input(t_data *data);
+void	await_instructions(t_data *data);
 
 // UTILS
 bool    is_spaces(char c);
 bool    only_digit(char *str);
+void    set_img_pixel(t_img *img, int x, int y, int color);
 
 // EXIT
 void    free_table(void **tab);
@@ -154,5 +174,8 @@ int quit(t_data *data, int exit_code);
 
 // raycasting
 // rendering
+
+// MINIMAP
+void make_minimap(t_data *data, t_minimap *minimap);
 
 #endif

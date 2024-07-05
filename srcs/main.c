@@ -30,7 +30,7 @@ int main(int ac, char **av)
     print_window_of_controls();
 	initializer(&data);
 	render_images(&data);
-	listen_for_input(&data);
+	await_instructions(&data);
 	mlx_loop_hook(data->mlx, render, &data);
 	mlx_loop(data->mlx);
 	return (0);

@@ -86,7 +86,7 @@ static int	mouse_motion_handler(int x, int y, t_data *data)
 	return (SUCCESS);
 }
 
-void	listen_for_input(t_data *data)
+void	await_instructions(t_data *data)
 {
 	mlx_hook(data->window, ClientMessage, NoEventMask, exit_game, data);
 	mlx_hook(data->window, KeyPress, KeyPressMask, ft_pressed, data);

@@ -21,3 +21,14 @@ bool    is_spaces(char c)
         return (false);
     return (true);
 }
+
+void set_image_pixel(t_img *img, int x, int y, int color)
+{
+    char *dst;
+
+    if (x >= 0 && x < img->width && y >= 0 && y < img->height)
+    {
+        dst = (char *)img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+        *(unsigned int*)dst = color;
+    }
+}
