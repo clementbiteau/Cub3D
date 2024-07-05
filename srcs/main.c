@@ -16,6 +16,7 @@ static void initializer(t_data *data)
 {
     init_mlx(&data);
 	init_textures(&data);
+	init_minimap(&data->minimap, &data->map, MINI_MAP_TSIZE);
 }
 
 int main(int ac, char **av)

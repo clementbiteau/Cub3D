@@ -33,6 +33,9 @@ SRCS        =                 initialize/init_of_data/init_image.c \
                         movement/user_input.c \
                         exiting/free.c \
                         exiting/quit_the_game.c \
+						minimap/minimap.c \
+						raycaster/raycaster.c \
+
 
 MAIN        = main.c
 

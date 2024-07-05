@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-static void set_tiles_for_minimap(t_img *img, int x, int y, int tile_size,  int color)
+static void set_tiles_for_minimap(t_img *img, int x, int y, int tile_size, int color)
 {
     int i;
     int j;
@@ -18,7 +18,7 @@ static void set_tiles_for_minimap(t_img *img, int x, int y, int tile_size,  int 
     }
 }
 
-static void build_minimap_contoure(t_minimap *mini, int x, int y)
+static void build_minimap_contour(t_minimap *mini, int x, int y)
 {
     char    tile;
     int     color;
@@ -71,7 +71,7 @@ static void minimap_builder(t_minimap *minimap)
         {
             if (!minimap->map[y][x])
                 break;
-            build_minimap_contoure(minimap, x, y);
+            build_minimap_contour(minimap, x, y);
             x++;
         }
         y++;

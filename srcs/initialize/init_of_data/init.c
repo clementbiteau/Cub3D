@@ -13,4 +13,5 @@ void	init_data(t_data *data)
 	init_texinfo(&data->coloring);
 	init_mapper(&data->mapper);
 	init_img_clean(&data->minimap);
+	init_raycast(&data->ray);
 }

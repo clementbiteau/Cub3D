@@ -26,12 +26,13 @@
 
 # define MOUSE_MOVEMENT 10
 
-#define MINI_MAP_PLAYER 0xFF0000
-#define MINI_MAP_WALL 0x00FF00
-#define MINI_MAP_FLOOR 0x0000FF
-#define MINI_MAP_SPACE 0xFFFFFF
-#define MINI_MAP_PIXEL_SIZE 100
-#define MINI_MAP_BORDERS 0x000000
+# define MINI_MAP_PLAYER 0xFF0000
+# define MINI_MAP_WALL 0x00FF00
+# define MINI_MAP_FLOOR 0x0000FF
+# define MINI_MAP_SPACE 0xFFFFFF
+# define MINI_MAP_PIXEL_SIZE 100
+# define MINI_MAP_BORDERS 0x000000
+# define MINI_MAP_TSIZE 10
 
 # define ERROR_START "./cub3d -> <map> (map file must be .cub)"
 # define ERROR_INPUT_ARGS "Wrong Arguments Input"
@@ -118,6 +119,24 @@ typedef struct s_player
 	int		rotate;
 }	t_player;
 
+typedef struct	s_ray
+{
+    double camera_x;
+    double ray_dir_x;
+    double ray_dir_y;
+    int map_x;
+    int map_y;
+    double side_dist_x;
+    double side_dist_y;
+    double delta_dist_x;
+    double delta_dist_y;
+    double perp_wall_dist;
+    int step_x;
+    int step_y;
+    int wall_hit;
+    int vert_or_horiz;
+} 				t_ray;
+
 typedef struct	s_minimap
 {
 	t_img		*img;
@@ -125,7 +144,6 @@ typedef struct	s_minimap
 	int			tile_size;
 	int			size;
 }				t_minimap;
-
 
 typedef struct s_data
 {
@@ -140,9 +158,10 @@ typedef struct s_data
 	t_mapper	mapper;
 	t_coloring	coloring;
 	t_img		minimap;
+	t_ray		ray;
 }	t_data;
 
-// parsing args
+// PARSING
 int check_input(char *input);
 int check_input(char *input);
 bool    check_map_build(t_mapper *map_info, char **map);
@@ -150,12 +169,14 @@ bool    check_map_build(t_mapper *map_info, char **map);
 // INIT
 void    re_init_image(t_img *image);
 void	init_mapper(t_mapper *mapper);
-void init_player_in_field(t_data *data);
+void	init_player_in_field(t_data *data);
 void	init_player(t_player *player);
 void	init_data(t_data *data);
 void	init_mlx(t_data *data);
+void	init_minimap(t_minimap *minimap, char **map, int tile_size);
+void	init_raycast(t_ray *ray);
 
-// movement manager
+// MOVE
 int    check_move(t_data *data, double next_x, double next_y);
 int	moving(t_data *data);
 void	await_instructions(t_data *data);
@@ -172,7 +193,9 @@ int    ft_error(char *why, char *str, int exit_code);
 int exit_game(t_data *data);
 int quit(t_data *data, int exit_code);
 
-// raycasting
+// RAYCASTING
+
+
 // rendering
 
 // MINIMAP
