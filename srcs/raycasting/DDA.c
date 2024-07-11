@@ -40,13 +40,13 @@ static void update_ray_position(t_ray *ray)
     {
         ray->dist_to_wall_x += ray->dist_on_delta_x;
         ray->map_x += ray->step_x;
-        ray->vert_or_horiz = 0; // Vertical wall hit
+        ray->vert_or_horiz = 0;
     }
     else
     {
         ray->dist_to_wall_y += ray->dist_on_delta_y;
         ray->map_y += ray->step_y;
-        ray->vert_or_horiz = 1; // Horizontal wall hit
+        ray->vert_or_horiz = 1;
     }
 }
 
@@ -69,4 +69,3 @@ static void do_digital_differential_analyser(t_data *data, t_ray *ray)
         ray->wall_hit = check_hit(data, ray);
     }
 }
-
