@@ -190,9 +190,10 @@ int		exit_game(t_data *data);
 int		quit(t_data *data, int exit_code);
 
 // RAYCASTING
+int raycasting(t_player *player, t_data *data);
+void set_dda(t_ray *ray, t_player *player);
 void perform_dda(t_data *data, t_ray *ray);
 void raycast_detailed_cooking(t_ray *ray, t_data *data, t_player *player);
-
 
 // rendering
 int render(t_data *data);

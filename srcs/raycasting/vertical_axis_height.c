@@ -106,7 +106,7 @@ static double how_was_wall_hit(t_ray *ray, t_player *player)
     return (wall_x - floor(wall_x));
 }
 
-void raycast_detailed_cooking(t_ray *ray, t_data *data, t_player *player)
+void raycast_preparation(t_ray *ray, t_data *data, t_player *player)
 {
     ray->perp_wall_dist = calculate_perpendicular_distance(ray);
     ray->axis_height = calculate_axis_height(ray->perp_wall_dist, data->win_height);

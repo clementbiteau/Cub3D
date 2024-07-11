@@ -46,7 +46,7 @@ static void set_dda_y(t_ray *ray, t_player *player)
     }
 }
 
-static void set_dda(t_ray *ray, t_player *player)
+void set_dda(t_ray *ray, t_player *player)
 {
     set_dda_x(ray, player);
     set_dda_y(ray, player);
