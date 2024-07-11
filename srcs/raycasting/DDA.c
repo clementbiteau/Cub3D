@@ -61,7 +61,7 @@ static int check_hit(t_data *data, t_ray *ray)
     return 0;
 }
 
-static void do_digital_differential_analyser(t_data *data, t_ray *ray)
+static void do_dda(t_data *data, t_ray *ray)
 {
     while (ray->wall_hit == 0)
     {
