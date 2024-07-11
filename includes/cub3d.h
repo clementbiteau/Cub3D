@@ -151,9 +151,9 @@ typedef struct s_data
 }	t_data;
 
 // PARSING
-int check_input(char *input);
-int check_input(char *input);
-bool    check_map_build(t_mapper *map_info, char **map);
+int		check_input(char *input);
+int		check_input(char *input);
+bool	check_map_build(t_mapper *map_info, char **map);
 
 // INIT
 void    re_init_image(t_img *image);
@@ -168,21 +168,21 @@ void	init_ray(t_ray *ray);
 void    init_raycasting(int x, t_ray *ray, t_player *player);
 
 // MOVE
-int    check_move(t_data *data, double next_x, double next_y);
-int	moving(t_data *data);
+int		check_move(t_data *data, double next_x, double next_y);
+int		moving(t_data *data);
 void	await_instructions(t_data *data);
 
 // UTILS
 bool    is_spaces(char c);
 bool    only_digit(char *str);
-void    set_img_pixel(t_img *img, int x, int y, int color);
+void	set_image_pixel(t_img *img, int x, int y, int color);
 
 // EXIT
-void    free_table(void **tab);
-int    free_data(t_data *data);
-int    ft_error(char *why, char *str, int exit_code);
-int exit_game(t_data *data);
-int quit(t_data *data, int exit_code);
+void	free_table(void **tab);
+int		free_data(t_data *data);
+int		ft_error(char *why, char *str, int exit_code);
+int		exit_game(t_data *data);
+int		quit(t_data *data, int exit_code);
 
 // RAYCASTING
 
