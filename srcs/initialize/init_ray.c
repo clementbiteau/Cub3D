@@ -7,10 +7,10 @@ void    init_ray(t_ray *ray)
     ray->ray_dir_y = 0;
     ray->map_x = 0;
     ray->map_y = 0;
-    ray->side_dist_x = 0;
-    ray->side_dist_y = 0;
-    ray->delta_dist_x = 0;
-    ray->delta_dist_y = 0;
+    ray->dist_to_wall_x = 0;
+    ray->dist_to_wall_y = 0;
+    ray->dist_on_delta_x = 0;
+    ray->dist_on_delta_y = 0;
     ray->perp_wall_dist = 0;
     ray->step_x = 0;
     ray->step_y = 0;
@@ -26,6 +26,6 @@ void    init_raycasting(int x, t_ray *ray, t_player *player)
 	ray->ray_dir_y = player->dir_y + player->plane_y * ray->camera_x;
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
-	ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
-	ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
+	ray->dist_on_delta_x = fabs(1 / ray->ray_dir_x);
+	ray->dist_on_delta_y = fabs(1 / ray->ray_dir_y);
 }

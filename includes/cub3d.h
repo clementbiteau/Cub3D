@@ -45,8 +45,6 @@
 # define ERROR_NO_MLX "MinilibX was unable to open a window."
 # define ERROR_MLX_AFF "MinilibX was unable to give a printout."
 
-typedef unsigned long	t_ulong;
-
 enum    e_output
 {
     SUCCESS = 0,
@@ -126,10 +124,10 @@ typedef struct	s_ray
     double	ray_dir_y;
     int		map_x;
     int		map_y;
-    double	side_dist_x;
-    double	side_dist_y;
-    double	delta_dist_x;
-    double	delta_dist_y;
+    double	dist_to_wall_x;
+    double	dist_to_wall_y;
+    double	dist_on_delta_x;
+    double	dist_on_delta_y;
     double	perp_wall_dist;
     int		step_x;
     int		step_y;
