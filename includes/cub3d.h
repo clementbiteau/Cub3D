@@ -45,16 +45,7 @@
 # define ERROR_NO_MLX "MinilibX was unable to open a window."
 # define ERROR_MLX_AFF "MinilibX was unable to give a printout."
 
-enum    e_output
-{
-    SUCCESS = 0,
-    FAILURE = 1,
-    ERR = 2,
-    BREAK = 3,
-    CONTINUE = 4
-};
-
-enum e_texture_index
+enum e_coloring_index
 {
 	NORTH = 0,
 	SOUTH = 1,

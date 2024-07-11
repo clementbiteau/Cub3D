@@ -17,7 +17,7 @@ void    free_table(void **tab)
     }
 }
 
-static void free_textures(t_coloring *textures)
+static void free_colorings(t_coloring *textures)
 {
     if (textures->north)
         free(textures->north);
@@ -49,7 +49,7 @@ int    free_data(t_data *data)
         free_table((void **)data->textures);
     if (data->texture_pixels)
         free_table((void **)data->texture_pixels);
-    free_textures(&data->coloring);
+    free_colorings(&data->coloring);
     free_map(data);
-    return (FAILURE);
+    return (1);
 }

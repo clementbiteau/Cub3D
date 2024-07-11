@@ -41,14 +41,14 @@ int check_input(char *input)
     int fd;
 
     if (!is_cub(input) || check_file_existance(input))
-        return (ft_error(input, ERROR_INPUT_ARGS, FAILURE));
+        return (ft_error(input, ERROR_INPUT_ARGS, 1));
     fd = open(input, O_RDONLY);
     if (fd < 0)
-        return (ft_error(input, strerror(errno), FAILURE));
+        return (ft_error(input, strerror(errno), 1));
     close(fd);
     if (!is_cub(input))
-        return (ft_error(input, ERROR_INPUT_CUB, FAILURE));
+        return (ft_error(input, ERROR_INPUT_CUB, 1));
     if (!is_xpm(input))
-        return (ft_error(input, ERROR_INPUT_XPM, FAILURE));
-    return (SUCCESS);
+        return (ft_error(input, ERROR_INPUT_XPM, 1));
+    return (0);
 }
