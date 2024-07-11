@@ -40,7 +40,7 @@ int check_input(char *input)
 {
     int fd;
 
-    if (!is_cub(input))
+    if (!is_cub(input) || check_file_existance(input))
         return (ft_error(input, ERROR_INPUT_ARGS, FAILURE));
     fd = open(input, O_RDONLY);
     if (fd < 0)

@@ -31,5 +31,5 @@ static int check_map_garnish(t_data *data, char **map)
 
 int check_map()
 {
-
+    
 }

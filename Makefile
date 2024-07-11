@@ -12,7 +12,7 @@
 
 NAME    = Cub3D
 CC      = clang
-CFLAGS  = -Wall -Werror -Wextra -g -Iincludes -Iminilibx-linux
+CFLAGS  = -Wall -Werror -Wextra -g -Iincludes -Iminilibx-linux -I/usr/X11/include
 LIBFT   = libft/libft.a
 AUTHOR  = Céline & Clément - The FPS Masters
 DATE    = 04/07/2024
@@ -21,7 +21,6 @@ SRCS        =                 initialize/init_image.c \
                         initialize/init_map_info.c \
                         initialize/init_player_in_field.c \
                         initialize/init_player.c \
-                        initialize/init_raycast.c \
                         initialize/init.c \
                         initialize/init_mlx.c \
                         parsing/parser_input.c \
@@ -33,9 +32,8 @@ SRCS        =                 initialize/init_image.c \
                         movement/user_input.c \
                         exiting/free.c \
                         exiting/quit_the_game.c \
+						rendering/render.c \
 						minimap/minimap.c \
-						raycaster/raycaster.c \
-
 
 MAIN        = main.c
 

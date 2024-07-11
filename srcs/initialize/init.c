@@ -10,8 +10,7 @@ void	init_data(t_data *data)
 	data->texture_pixels = NULL;
 	data->textures = NULL;
 	init_player(&data->player);
-	init_texinfo(&data->coloring);
+	init_coloring(&data->coloring);
 	init_mapper(&data->mapper);
-	init_img_clean(&data->minimap);
-	init_raycast(&data->ray);
+	re_init_image(&data->minimap);
 }

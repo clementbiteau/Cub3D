@@ -121,20 +121,20 @@ typedef struct s_player
 
 typedef struct	s_ray
 {
-    double camera_x;
-    double ray_dir_x;
-    double ray_dir_y;
-    int map_x;
-    int map_y;
-    double side_dist_x;
-    double side_dist_y;
-    double delta_dist_x;
-    double delta_dist_y;
-    double perp_wall_dist;
-    int step_x;
-    int step_y;
-    int wall_hit;
-    int vert_or_horiz;
+    double	camera_x;
+    double	ray_dir_x;
+    double	ray_dir_y;
+    int		map_x;
+    int		map_y;
+    double	side_dist_x;
+    double	side_dist_y;
+    double	delta_dist_x;
+    double	delta_dist_y;
+    double	perp_wall_dist;
+    int		step_x;
+    int		step_y;
+    int		wall_hit;
+    int		vert_or_horiz;
 } 				t_ray;
 
 typedef struct	s_minimap
@@ -174,7 +174,9 @@ void	init_player(t_player *player);
 void	init_data(t_data *data);
 void	init_mlx(t_data *data);
 void	init_minimap(t_minimap *minimap, char **map, int tile_size);
-void	init_raycast(t_ray *ray);
+void    init_coloring(t_coloring *shades);
+void	init_ray(t_ray *ray);
+void    init_raycasting(int x, t_ray *ray, t_player *player);
 
 // MOVE
 int    check_move(t_data *data, double next_x, double next_y);
@@ -197,6 +199,7 @@ int quit(t_data *data, int exit_code);
 
 
 // rendering
+int render(t_data *data);
 
 // MINIMAP
 void make_minimap(t_data *data, t_minimap *minimap);
