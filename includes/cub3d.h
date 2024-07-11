@@ -120,10 +120,15 @@ typedef struct	s_ray
     double	dist_on_delta_x;
     double	dist_on_delta_y;
     double	perp_wall_dist;
+	double	wall_height;
+	int		cast_start;
+	int		cast_end;
     int		step_x;
     int		step_y;
     int		wall_hit;
     int		vert_or_horiz;
+	int		axis_height;
+
 } 				t_ray;
 
 typedef struct	s_minimap
@@ -186,6 +191,8 @@ int		quit(t_data *data, int exit_code);
 
 // RAYCASTING
 void perform_dda(t_data *data, t_ray *ray);
+void raycast_detailed_cooking(t_ray *ray, t_data *data, t_player *player);
+
 
 // rendering
 int render(t_data *data);
