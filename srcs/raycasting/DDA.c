@@ -1,5 +1,23 @@
 #include "cub3d.h"
 
+/**
+ * The DDA (Digital Differential Analyzer) is a common and productive algorithm
+ * that is was used for 3D games like Wolfenstein 3D.
+ * It virtualy draws a line (a segment) between 2 distinct points.
+ * The starting point is the player's position of the axis x,y,
+ * and will calculate therefore the distance between those 2 points.
+ * The calculation of such goes through the line storing the number of
+ * vertical and horizontal lines crossed when the segment is being cast.
+ * This segment is called -> a RAY -> RAYCASTING.
+ * 
+ * This DDA makes a 2D plane render a 3D print because it evaluates in some sorts
+ * the empty distance to the next wall.
+ * In our game, the player is the starting point.
+ * Within his vision, the player will see walls at a distance.
+ * The further the wall or object, the smaller they will be represented
+ * and thus rendering a more realistic in-depth vision.
+*/
+
 static void set_dda_x(t_ray *ray, t_player *player)
 {
     if (ray->ray_dir_x < 0)
@@ -61,7 +79,7 @@ static int check_hit(t_data *data, t_ray *ray)
     return 0;
 }
 
-static void perform_dda(t_data *data, t_ray *ray)
+void perform_dda(t_data *data, t_ray *ray)
 {
     while (ray->wall_hit == 0)
     {

@@ -32,6 +32,9 @@ SRCS        =                 initialize/init_image.c \
                         movement/user_input.c \
                         exiting/free.c \
                         exiting/quit_the_game.c \
+						raycasting/DDA.c \
+						raycasting/raycast.c \
+						raycasting/vertical_axis_height.c \
 						rendering/render.c \
 						minimap/minimap.c \
 

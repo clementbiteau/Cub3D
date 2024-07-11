@@ -185,7 +185,7 @@ int		exit_game(t_data *data);
 int		quit(t_data *data, int exit_code);
 
 // RAYCASTING
-
+void perform_dda(t_data *data, t_ray *ray);
 
 // rendering
 int render(t_data *data);
