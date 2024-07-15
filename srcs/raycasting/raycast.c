@@ -9,11 +9,10 @@ int raycasting(t_player *player, t_data *data)
     ray = data->ray;
     while (x < data->win_width)
     {
-        init_raycating(x, &ray, player);
+        init_raycasting(x, &ray, player);
         set_dda(&ray, player);
-        perform_dda(data, &ray);
-        raycast_preparation(&ray, data, player);
-        coloring(data, &data->textures, &ray, x);
+        do_dda(data, &ray);
+        // ICI NOUS DEVONS IMPLEMENTER LE COLORING
         x++;
     }
     return (0);

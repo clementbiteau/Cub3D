@@ -79,7 +79,7 @@ static int check_hit(t_data *data, t_ray *ray)
     return 0;
 }
 
-void perform_dda(t_data *data, t_ray *ray)
+void do_dda(t_data *data, t_ray *ray)
 {
     while (ray->wall_hit == 0)
     {

@@ -35,7 +35,7 @@ SRCS        =                 initialize/init_image.c \
 						raycasting/DDA.c \
 						raycasting/raycast.c \
 						raycasting/vertical_axis_height.c \
-						rendering/render.c \
+						rendering/rendering.c \
 						minimap/minimap.c \
 
 MAIN        = main.c

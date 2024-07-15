@@ -108,8 +108,8 @@ static double how_was_wall_hit(t_ray *ray, t_player *player)
 
 void raycast_preparation(t_ray *ray, t_data *data, t_player *player)
 {
-    ray->perp_wall_dist = calculate_perpendicular_distance(ray);
-    ray->axis_height = calculate_axis_height(ray->perp_wall_dist, data->win_height);
+    ray->perp_wall_dist = perpendicular_distance(ray);
+    ray->axis_height = axis_height(ray->perp_wall_dist, data->win_height);
     ray->cast_start = calculate_slice_start(ray->axis_height, data->win_height);
     ray->cast_end = calculate_slice_end(ray->axis_height, data->win_height);
     ray->wall_height = how_was_wall_hit(ray, player);
