@@ -41,6 +41,12 @@
 
 # define ERROR_MAP_GARNISH "Wrong Map Elements -> map defined by: 10NSEW"
 # define ERROR_MAP_PLAYER "Wrong Number of Players -> only 1 is allowed"
+# define ERROR_PLAYER_PLACE "Player is not placed correctly."
+# define ERROR_PLAYER_DIRECTION "Player is not facing valid direction."
+# define ERROR_NO_MAP "No map found."
+# define ERROR_NO_WALLS "No walls your player can escape."
+# define ERROR_MAP_SMALL "Map is too small cannot be played."
+# define ERROR_MAP_CHAR_END "Map has unclear character at end of file."
 
 # define ERROR_NO_MLX "MinilibX was unable to open a window."
 # define ERROR_MLX_AFF "MinilibX was unable to give a printout."
@@ -157,8 +163,9 @@ typedef struct s_data
 
 // PARSING
 int		check_input(char *input);
-int		check_input(char *input);
 bool	check_map_build(t_mapper *map_info, char **map);
+int check_map_validity(t_data *data, char **map_tab);
+int check_map_sides(t_mapper *map, char **map_tab);
 
 // INIT
 void    re_init_image(t_img *image);
@@ -176,6 +183,7 @@ void    init_raycasting(int x, t_ray *ray, t_player *player);
 int		check_move(t_data *data, double next_x, double next_y);
 int		moving(t_data *data);
 void	await_instructions(t_data *data);
+int rotate_player(t_data *data, double rotdir);
 
 // UTILS
 bool    is_spaces(char c);
