@@ -1,24 +1,5 @@
 #include "cub3d.h"
 
-static int  input_handler(int pressed, t_data *data)
-{
-    if (pressed == XK_Right)
-        data->player.rotate += 1;
-    if (pressed == XK_Left)
-        data->player.rotate -= 1;
-    if (pressed == XK_w)
-        data->player.move_y += 1;
-    if (pressed == XK_s)
-        data->player.move_y -= 1;
-    if (pressed == XK_a)
-        data->player.move_x -= 1;
-    if (pressed == XK_d)
-        data->player.move_x += 1;
-    if (pressed == XK_Escape)
-        exit_game(data);
-    return (0);
-}
-
 static int	ft_pressed(int pressed, t_data *data)
 {
 	if (pressed == XK_Escape)
@@ -91,4 +72,6 @@ void	await_instructions(t_data *data)
 	mlx_hook(data->window, ClientMessage, NoEventMask, exit_game, data);
 	mlx_hook(data->window, KeyPress, KeyPressMask, ft_pressed, data);
 	mlx_hook(data->window, KeyRelease, KeyReleaseMask, ft_released, data);
+	mlx_hook(data->window, MotionNotify, PointerMotionMask,
+			mouse_motion_handler, data);
 }

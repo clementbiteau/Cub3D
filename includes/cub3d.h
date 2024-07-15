@@ -183,7 +183,7 @@ void    init_raycasting(int x, t_ray *ray, t_player *player);
 int		check_move(t_data *data, double next_x, double next_y);
 int		moving(t_data *data);
 void	await_instructions(t_data *data);
-int rotate_player(t_data *data, double rotdir);
+int		rotate_player(t_data *data, double rotdir);
 
 // UTILS
 bool    is_spaces(char c);
