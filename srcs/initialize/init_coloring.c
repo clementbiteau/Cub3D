@@ -1,19 +1,19 @@
 #include "cub3d.h"
 
-void init_coloring(t_coloring *shades)
+void init_coloring(t_coloring *coloring)
 {
-    shades->north = NULL;
-    shades->south = NULL;
-    shades->west = NULL;
-    shades->east = NULL;
-    shades->floor = 0; 
-    shades->ceiling = 0;
-    shades->floor_in_hexa = 0x0;
-    shades->ceiling_in_hexa = 0x0;
-    shades->size = 0;  
-    shades->index = 0; 
-    shades->step = 0.0;
-    shades->pos = 0.0;
-    shades->x = 0;
-    shades->y = 0;
+    coloring->north = NULL;
+    coloring->south = NULL;
+    coloring->east = NULL;
+    coloring->west = NULL;
+    coloring->floor = 0; 
+    coloring->ceiling = 0;
+    coloring->floor_in_hexa = 0x0;
+    coloring->ceiling_in_hexa = 0x0;
+    coloring->size = 0;  
+    coloring->index = 0; 
+    coloring->step = 0.0;
+    coloring->pos = 0.0;
+    coloring->x = 0;
+    coloring->y = 0;
 }

@@ -1,44 +1,32 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: cbiteau <marvin@42.fr>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/04 13:55:38 by cbiteau           #+#    #+#              #
-#    Updated: 2024/07/04 14:47:43 by cbiteau          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME    = Cub3D
 CC      = clang
 CFLAGS  = -Wall -Werror -Wextra -g -Iincludes -Iminilibx-linux -I/usr/X11/include
+LDFLAGS = -Llibft -lft -L/usr/X11/lib -lX11 -lmlx -lm -framework OpenGL -framework AppKit
 LIBFT   = libft/libft.a
 AUTHOR  = Céline & Clément - The FPS Masters
 DATE    = 04/07/2024
 
-SRCS        =                 initialize/init_image.c \
-                        initialize/init_map_info.c \
-                        initialize/init_player_in_field.c \
-                        initialize/init_player.c \
-                        initialize/init.c \
-                        initialize/init_mlx.c \
-                        parsing/parser_input.c \
-                        parsing/parser_map_build.c \
-                        parsing/parser_map_elements.c \
-                        utils/utils.c \
-                        movement/check_move.c \
-                        movement/moving.c \
-                        movement/user_input.c \
-                        exiting/free.c \
-                        exiting/quit_the_game.c \
-						raycasting/DDA.c \
-						raycasting/raycast.c \
-						raycasting/vertical_axis_height.c \
-						rendering/rendering.c \
-						minimap/minimap.c \
-
-MAIN        = main.c
+SRCS    = initialize/init_image.c \
+          initialize/init_map_info.c \
+          initialize/init_player_in_field.c \
+          initialize/init_player.c \
+          initialize/init.c \
+          initialize/init_mlx.c \
+          parsing/parser_input.c \
+          parsing/parser_map_build.c \
+          parsing/parser_map_elements.c \
+          utils/utils.c \
+          movement/check_move.c \
+          movement/moving.c \
+          movement/user_input.c \
+          exiting/free.c \
+          exiting/quit_the_game.c \
+          raycasting/DDA.c \
+          raycasting/raycast.c \
+          raycasting/vertical_axis_height.c \
+          rendering/rendering.c \
+          minimap/minimap.c \
+          main.c
 
 OBJ_MAIN    = $(addprefix objs/, ${MAIN:.c=.o})
 OBJS        = $(addprefix objs/, ${SRCS:.c=.o})
@@ -72,7 +60,7 @@ rm -f $@.log; \
 exit $$RESULT
 endef
 
-all:    header $(NAME)
+all: header $(NAME)
 
 header:
 	@printf "%b" "$(OK_COLOR)"
@@ -87,26 +75,26 @@ header:
 	@printf "%b" "$(OBJ_COLOR)Date:   $(WARN_COLOR)$(DATE)\n\033[m"
 	@echo
 
-$(NAME):    $(LIBFT) ${OBJS} ${OBJ_MAIN}
-	@$(call run,$(CC) $(CFLAGS) -o $@ ${OBJS} ${OBJ_MAIN} -L./libft -lft -lreadline -lncurses)
+$(NAME): $(LIBFT) $(OBJS) $(OBJ_MAIN)
+	@$(call run,$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(OBJ_MAIN))
 
-objs/%.o:  srcs/%.c
+objs/%.o: srcs/%.c
 	@mkdir -p $(dir $@)
 	@$(call run,$(CC) $(CFLAGS) -c $< -o $@)
 
 $(LIBFT):
-	@$(call run,make -sC ./libft libft.a)
+	@$(call run,make -sC libft libft.a)
 
-clean:      header
+clean: header
 	@rm -rf objs
-	@make -sC ./libft clean
+	@make -sC libft clean
 	@printf "%-53b%b" "$(COM_COLOR)clean:" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"
 
-fclean:     header clean
+fclean: header clean
 	@rm -rf $(NAME)
-	@make -sC ./libft fclean
+	@make -sC libft fclean
 	@printf "%-53b%b" "$(COM_COLOR)fclean:" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"
 
-re:         fclean all
+re: fclean all
 
-.PHONY:     all clean fclean re libft header
+.PHONY: all clean fclean re libft header

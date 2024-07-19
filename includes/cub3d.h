@@ -4,11 +4,10 @@
 # include "colors.h"
 # include "../libft/includes/libft.h"
 # include "mlx.h"
+#include <X11/X.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <unistd.h>
-# include <X11/keysym.h>
-# include <X11/X.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
@@ -17,9 +16,17 @@
 # include <stdlib.h>
 # include <string.h>
 
+# define ESCAPE_KEY 53
+# define W_KEY 13
+# define S_KEY 1
+# define A_KEY 0
+# define D_KEY 2
+# define LEFT_ARROW_KEY 123
+# define RIGHT_ARROW_KEY 124
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
+# define TILE_SIZE 30
 
 # define MOVEMENT_SPEED 0.1
 # define ROTATION_SPEED 0.05
@@ -61,105 +68,105 @@ enum e_coloring_index
 
 typedef struct s_img
 {
-	void	*img;
-	int		*addr;
-	int		width;
-	int		height;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_img;
+    void    *img;               // Pointer to the image data
+    int     *addr;              // Pointer to the first pixel in the image data
+    int     width;              // Width of the image in pixels
+    int     height;             // Height of the image in pixels
+    int     bits_per_pixel;     // Number of bits per pixel
+    int     line_length;        // Length of a line in bytes in memory
+    int     endian;             // Endianness of the image data
+} t_img;
+
 
 typedef struct s_coloring
 {
-	char			*north;
+    char            *north;         // Path or identifier for textures
 	char			*south;
-	char			*west;
 	char			*east;
-	int				*floor;
-	int				*ceiling;
-	unsigned long	floor_in_hexa;
-	unsigned long	ceiling_in_hexa;
-	int				size;
-	int				index;
-	double			step;
-	double			pos;
-	int				x;
-	int				y;
-}	t_coloring;
+	char			*west;
+    int             *floor;         // Pointer to floor color or texture data
+    int             *ceiling;       // Pointer to ceiling color or texture data
+    unsigned long   floor_in_hexa;  // Floor color in hexadecimal
+    unsigned long   ceiling_in_hexa;// Ceiling color in hexadecimal
+    int             size;           // Size parameter, likely related to dimensions or length
+    int             index;          // Index for array access or iteration
+    double          step;           // Step size for some process
+    double          pos;            // Position, likely in a coordinate system
+    int             x;              // X coordinate in a plane or grid
+    int             y;              // Y coordinate in a plane or grid
+} t_coloring;
 
 typedef struct s_mapper
 {
-	int			fd;
-	int			height;
-	int			width;
-	int			line_count;
-	char		*path;
-	char		**file;
-	int			last_index;
-}	t_mapper;
+    int     fd;             // File descriptor for file operations
+    int     height;         // Height or vertical dimension
+    int     width;          // Width or horizontal dimension
+    int     line_count;     // Number of lines or line-related count
+    char    *path;          // Path to a file or resource
+    char    **file;         // Pointer to an array of strings of file
+    int     last_index;     // Index of the last item or position in an array
+} t_mapper;
 
 typedef struct s_player
 {
-	char	dir;
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
-	int		has_moved;
-	int		move_x;
-	int		move_y;
-	int		rotate;
-}	t_player;
+    char    dir;        // Direction the player is facing
+    double  pos_x;      // X-coordinate of the player's position
+    double  pos_y;      // Y-coordinate of the player's position
+    double  dir_x;      // X-component of the player's direction vector
+    double  dir_y;      // Y-component of the player's direction vector
+    double  plane_x;    // X-component of the player's camera plane
+    double  plane_y;    // Y-component of the player's camera plane
+    int     has_moved;  // Flag indicating if the player has moved
+    int     move_x;     // Movement direction in the x-axis
+    int     move_y;     // Movement direction in the y-axis
+    int     rotate;     // Flag or value indicating rotation
+} t_player;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
-    double	camera_x;
-    double	ray_dir_x;
-    double	ray_dir_y;
-    int		map_x;
-    int		map_y;
-    double	dist_to_wall_x;
-    double	dist_to_wall_y;
-    double	dist_on_delta_x;
-    double	dist_on_delta_y;
-    double	perp_wall_dist;
-	double	wall_height;
-	int		cast_start;
-	int		cast_end;
-    int		step_x;
-    int		step_y;
-    int		wall_hit;
-    int		vert_or_horiz;
-	int		axis_height;
+    double  camera_x;       // X-coordinate of the camera plane
+    double  ray_dir_x;      // X-component of the ray direction
+    double  ray_dir_y;      // Y-component of the ray direction
+    int     map_x;          // X-coordinate of the map grid
+    int     map_y;          // Y-coordinate of the map grid
+    double  dist_to_wall_x; // Distance to the nearest wall in the x direction
+    double  dist_to_wall_y; // Distance to the nearest wall in the y direction
+    double  dist_on_delta_x;// Distance until next grid line in the x direction
+    double  dist_on_delta_y;// Distance until next grid line in the y direction
+    double  perp_wall_dist; // Perpendicular distance to the wall
+    double  wall_height;    // Height of the wall segment on the screen
+    int     cast_start;     // Start point of casting operation
+    int     cast_end;       // End point of casting operation
+    int     step_x;         // Step direction in the x-axis
+    int     step_y;         // Step direction in the y-axis
+    int     wall_hit;       // Flag indicating if a wall was hit
+    int     vert_or_horiz;  // Flag indicating vertical or horizontal hit
+    int     axis_height;    // Height or length in an axis
+} t_ray;
 
-} 				t_ray;
-
-typedef struct	s_minimap
+typedef struct s_minimap
 {
-	t_img		*img;
-	char		**map;
-	int			tile_size;
-	int			size;
-}				t_minimap;
+    t_img   img;       // Pointer to an image structure for the minimap
+    char    **map;      // 2D array representing the minimap layout
+    int     tile_size;  // Size of each tile in the minimap grid
+    int     size;       // Overall size or dimensions of the minimap
+} t_minimap;
 
 typedef struct s_data
 {
-	void		*mlx;
-	void		*window;
-	int			win_height;
-	int			win_width;
-	int			**texture_pixels;
-	int			**textures;
-	char		**map;
-	t_player	player;
-	t_mapper	mapper;
-	t_coloring	coloring;
-	t_img		minimap;
-	t_ray		ray;
-}	t_data;
+    void        *mlx;               // Pointer to MiniLibX instance
+    void        *window;            // Pointer to the game window
+    int         win_height;         // Height of the game window
+    int         win_width;          // Width of the game window
+    int         **texture_pixels;   // Pointer to texture pixel data
+    int         **textures;         // Pointer to texture data
+    char        **map;              // Pointer to the game map
+    t_player    player;
+    t_mapper    mapper;
+    t_coloring  coloring;
+    t_img       minimap;
+    t_ray       ray;
+} t_data;
 
 // PARSING
 int		check_input(char *input);

@@ -2,38 +2,38 @@
 
 static int	ft_pressed(int pressed, t_data *data)
 {
-	if (pressed == XK_Escape)
+	if (pressed == ESCAPE_KEY)
 		exit_game(data);
-	if (pressed == XK_w && data->player.move_y == 1)
+	if (pressed == W_KEY && data->player.move_y == 1)
 		data->player.move_y = 0;
-	if (pressed == XK_s && data->player.move_y == -1)
+	if (pressed == S_KEY && data->player.move_y == -1)
 		data->player.move_y = 0;
-	if (pressed == XK_a && data->player.move_x == -1)
+	if (pressed == A_KEY && data->player.move_x == -1)
 		data->player.move_x += 1;
-	if (pressed == XK_d && data->player.move_x == 1)
+	if (pressed == D_KEY && data->player.move_x == 1)
 		data->player.move_x -= 1;
-	if (pressed == XK_Left && data->player.rotate <= 1)
+	if (pressed == LEFT_ARROW_KEY && data->player.rotate <= 1)
 		data->player.rotate = 0;
-	if (pressed == XK_Right && data->player.rotate >= -1)
+	if (pressed == RIGHT_ARROW_KEY && data->player.rotate >= -1)
 		data->player.rotate = 0;
 	return (0);
 }
 
 static int	ft_released(int pressed, t_data *data)
 {
-	if (pressed == XK_Escape)
+	if (pressed == ESCAPE_KEY)
 		exit_game(data);
-	if (pressed == XK_w && data->player.move_y == 1)
+	if (pressed == W_KEY && data->player.move_y == 1)
 		data->player.move_y = 0;
-	if (pressed == XK_s && data->player.move_y == -1)
+	if (pressed == S_KEY && data->player.move_y == -1)
 		data->player.move_y = 0;
-	if (pressed == XK_a && data->player.move_x == -1)
+	if (pressed == A_KEY && data->player.move_x == -1)
 		data->player.move_x += 1;
-	if (pressed == XK_d && data->player.move_x == 1)
+	if (pressed == D_KEY && data->player.move_x == 1)
 		data->player.move_x -= 1;
-	if (pressed == XK_Left && data->player.rotate <= 1)
+	if (pressed == LEFT_ARROW_KEY && data->player.rotate <= 1)
 		data->player.rotate = 0;
-	if (pressed == XK_Right && data->player.rotate >= -1)
+	if (pressed == RIGHT_ARROW_KEY && data->player.rotate >= -1)
 		data->player.rotate = 0;
 	return (0);
 }
