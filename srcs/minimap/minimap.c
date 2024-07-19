@@ -49,7 +49,7 @@ static void build_minimap_borders(t_minimap *mini, int color)
         while (x <= size)
         {
             if (x < 5 || x > size - 5 || y < 5 || y > size - 5)
-                set_img_pixel(&mini->img, x, y , color);
+                set_image_pixel(&mini->img, x, y , color);
             x++;
         }
         y++;
@@ -86,7 +86,7 @@ void make_minimap(t_data *data, t_minimap *minimap)
     img_size = MINI_MAP_PIXEL_SIZE + minimap->tile_size;
 
     init_img(data, &data->minimap, img_size, img_size);
-    build_minimap(minimap);
+    minimap_builder(minimap);
     mlx_put_image_to_window(data->mlx, data->window, data->minimap.img, minimap->tile_size, data->win_height - (MINI_MAP_PIXEL_SIZE + (minimap->tile_size * 2)));
     mlx_destroy_image(data->mlx, data->minimap.img);
 }

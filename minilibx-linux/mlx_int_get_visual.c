@@ -26,9 +26,9 @@ int		mlx_int_get_visual(t_xvar *xvar)
 
   xvar->private_cmap = 0;
   xvar->visual = DefaultVisual(xvar->display,xvar->screen);
-  if (xvar->visual->class == trueColor)
+  if (xvar->visual->class == TrueColor)
     return (0);
-  template.class = trueColor;
+  template.class = TrueColor;
   template.depth = xvar->depth;
   if (!(vi = XGetVisualInfo(xvar->display,VisualDepthMask|VisualClassMask,
 			    &template,&nb_item)) )

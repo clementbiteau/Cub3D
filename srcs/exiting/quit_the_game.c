@@ -8,7 +8,7 @@ int quit(t_data *data, int exit_code)
         mlx_destroy_window(data->mlx, data->window);
     if (data->mlx)
     {
-        mlx_destroy_display(data->mlx);
+        mlx_destroy_image(data->mlx, data->window);
         mlx_loop_end(data->mlx);
         free(data->mlx);
     }

@@ -52,3 +52,18 @@ int check_input(char *input)
         return (ft_error(input, ERROR_INPUT_XPM, 1));
     return (0);
 }
+
+int	parse_args(t_data *data, char **av)
+{
+	if (check_file_existance(av[1]) == 1)
+		quit(data, 1);
+	// parse_data(av[1], data);
+	// if (get_file_data(data, data->mapper.file) == 1)
+	// 	return (free_data(data));
+	// if (check_map_validity(data, data->map) == 1)
+	// 	return (free_data(data));
+	// if (check_textures_validity(data, &data->textures) == 1)
+	// 	return (free_data(data));
+	init_player_in_field(data);
+	return (0);
+}

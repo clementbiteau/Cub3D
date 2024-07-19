@@ -1,10 +1,10 @@
 NAME    = Cub3D
 CC      = clang
 CFLAGS  = -Wall -Werror -Wextra -g -Iincludes -Iminilibx-linux -I/usr/X11/include
-LDFLAGS = -Llibft -lft -L/usr/X11/lib -lX11 -lmlx -lm -framework OpenGL -framework AppKit
+LDFLAGS = -Llibft -lft -Lminilibx-linux -lmlx -L/usr/X11/lib -lX11 -lm
 LIBFT   = libft/libft.a
 AUTHOR  = Céline & Clément - The FPS Masters
-DATE    = 04/07/2024
+DATE    = 19/07/2024
 
 SRCS    = initialize/init_image.c \
           initialize/init_map_info.c \
@@ -15,6 +15,7 @@ SRCS    = initialize/init_image.c \
           parsing/parser_input.c \
           parsing/parser_map_build.c \
           parsing/parser_map_elements.c \
+          parsing/parser_utils.c \
           utils/utils.c \
           movement/check_move.c \
           movement/moving.c \
@@ -76,7 +77,7 @@ header:
 	@echo
 
 $(NAME): $(LIBFT) $(OBJS) $(OBJ_MAIN)
-	@$(call run,$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(OBJ_MAIN))
+	@$(call run,$(CC) $(CFLAGS) -o $@ $(OBJS) $(OBJ_MAIN) $(LDFLAGS))
 
 objs/%.o: srcs/%.c
 	@mkdir -p $(dir $@)

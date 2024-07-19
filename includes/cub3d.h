@@ -4,7 +4,8 @@
 # include "colors.h"
 # include "../libft/includes/libft.h"
 # include "mlx.h"
-#include <X11/X.h>
+# include <X11/X.h>
+# include <X11/Xlib.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <unistd.h>
@@ -45,6 +46,8 @@
 # define ERROR_INPUT_ARGS "Wrong Arguments Input"
 # define ERROR_INPUT_CUB "Must provide a valid .cub file"
 # define ERROR_INPUT_XPM "Must provide a valid .xpm file"
+# define ERROR_ALLOC "Memory Allocation has failed."
+# define ERROR_MLX "mlx init has failed."
 
 # define ERROR_MAP_GARNISH "Wrong Map Elements -> map defined by: 10NSEW"
 # define ERROR_MAP_PLAYER "Wrong Number of Players -> only 1 is allowed"
@@ -57,6 +60,8 @@
 
 # define ERROR_NO_MLX "MinilibX was unable to open a window."
 # define ERROR_MLX_AFF "MinilibX was unable to give a printout."
+# define ERROR_TEXTURE "No Texture found."
+# define ERROR_COLOR "No colour found."
 
 enum e_coloring_index
 {
@@ -142,6 +147,7 @@ typedef struct s_ray
     int     wall_hit;       // Flag indicating if a wall was hit
     int     vert_or_horiz;  // Flag indicating vertical or horizontal hit
     int     axis_height;    // Height or length in an axis
+    int     wall_dist;
 } t_ray;
 
 typedef struct s_minimap
@@ -215,5 +221,13 @@ int render(t_data *data);
 
 // MINIMAP
 void make_minimap(t_data *data, t_minimap *minimap);
+
+void	update_texture_pixels(t_data *data, t_coloring *tex, t_ray *ray, int x);
+void	init_img(t_data *data, t_img *image, int width, int height);
+void	init_texture_pixels(t_data *data);
+void    render_image(t_data *data);
+void	init_textures(t_data *data);
+int     parse_args(t_data *data, char **av);
+//int	check_textures_validity(t_data *data, t_coloring *textures);
 
 #endif
